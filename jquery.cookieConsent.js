@@ -90,7 +90,7 @@
 
     // Build style element
     var style = "";
-    style += "#cookie-consent-wrapper {clear: both;overflow: hidden;}";
+    style += "#cookie-consent-wrapper {z-index:9999;clear:both;overflow:hidden;}";
     if( config.popover ) {
       style += "#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: " + config.color.popover + "; padding-top: 5em;}";
     }
