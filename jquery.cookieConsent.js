@@ -6,7 +6,8 @@
  */
 (function ($) {
   
-  $.cookieConsent = function (userConfig) {
+  $.cookieConsent = function (
+    userConfig) {
 
     if( $.cookie('cookieConsent') === 'yes' ) { return; }
 
@@ -16,7 +17,7 @@
     
     // Default configuration
     var config = {
-      popover: false, // Pop an overlay on the page, don't display at the top
+      mode: 'default', // Default, tab or popover
       color: {
         main: '#29f', // Border & icon color
         bg: '#fff', // Background color
@@ -91,10 +92,16 @@
     // Build style element
     var style = "";
     style += "#cookie-consent-wrapper {z-index:9999;clear:both;overflow:hidden;}";
-    if( config.popover ) {
+    if( config.mode === 'popover' ) {
       style += "#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: " + config.color.popover + "; padding-top: 5em;}";
     }
+    if( config.mode === 'tab' ) {
+      style += "#cookie-consent-wrapper {position:absolute;top:0;left:0;right:0;}";
+    }
     style += "#cookie-consent {color: " + config.color.text + ";background: " + config.color.bg + ";width: " + config.width + ";max-width: " + config.maxWidth + ";margin:0 auto;font: " + config.font + ";padding: 0.5em;border: 2px solid " + config.color.main + ";position: relative;}";
+    if( config.mode === 'tab' ) {
+      style += "#cookie-consent {border-top: none;}";
+    }
     style += "#cookie-info-icon {font-family: serif; font-size: 1.4em;background: " + config.color.main + ";float: left;padding: .25em .75em;border-radius: 50%;color: white;margin-right: .5em;}";
     style += "#cookie-consent p {margin: 0;overflow: hidden;}";
     style += "#cookie-consent a, #cookie-consent a:visited {color:" + config.color.main + "}";

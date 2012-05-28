@@ -22,7 +22,7 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 
 ```javascript
   $.cookieConsent({
-    popover: false, // Pop an overlay on the page, don't display at the top
+    mode: 'default', // Default, tab or popover
     color: {
       main: '#29f', // Border & icon color
       bg: '#fff', // Background color
