@@ -97,6 +97,8 @@
     style += "#cookie-consent {color: " + config.color.text + ";background: " + config.color.bg + ";width: " + config.width + ";max-width: " + config.maxWidth + ";margin:0 auto;font: " + config.font + ";padding: 0.5em;border: 2px solid " + config.color.main + ";position: relative;}";
     style += "#cookie-info-icon {font-family: serif; font-size: 1.4em;background: " + config.color.main + ";float: left;padding: .25em .75em;border-radius: 50%;color: white;margin-right: .5em;}";
     style += "#cookie-consent p {margin: 0;overflow: hidden;}";
+    style += "#cookie-consent a, #cookie-consent a:visited {color:" + config.color.main + "}";
+    style += "#cookie-consent a:hover {color:" + config.color.text + "}";
     style += "#cookie-close {position: absolute;top: 0;right: 0;padding: 0em .5em .25em;text-decoration: none;}";
     style += "#cookie-close:hover {background: #efefef}";
     style = "<style>" + style + "</style>";
