@@ -18,9 +18,11 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 
 ```javascript
   $.cookieConsent({
+    popover: false,
     color: {
       main: '#29f', // Border & icon color
       bg: '#fff', // Background color
+      popover: 'rgba(0,0,0,.3)', // Popover background color
       text: '#444' // Text color
     },
     font: '12px Tahoma, sans-serif', // Font size & family
