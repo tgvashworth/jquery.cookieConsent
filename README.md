@@ -1,6 +1,10 @@
-# CookieConsent
+![jquery.cookieConsent](http://i.phuu.net/2h0g1E3z3P252L2l312I/Screen%20Shot%202012-05-28%20at%2012.06.13.png)
+
+# jquery.cookieConsent
 
 Drop-in jQuery plugin for implied to consent to the EU Cookie directive.
+
+Compliance in one file and `$.cookieConsent()`.
 
 Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 
