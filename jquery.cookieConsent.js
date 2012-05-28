@@ -1,6 +1,14 @@
+/*!
+ * jQuery CookieConsent Plugin
+ * https://github.com/phuu/cookieConsent
+ *
+ * Copyright 2012, Tom Ashworth
+ */
 (function ($) {
   
-  $.fn.cookieConsent = function (userConfig) {
+  $.cookieConsent = function (userConfig) {
+
+    if( $.cookie('cookieConsent') === 'yes' ) { return; }
 
     if( ! userConfig ) {
       userConfig = {};
@@ -90,6 +98,7 @@
 
     // Set up quit behaviour
     $(elem).on('click', '#cookie-close', function () {
+      $.cookie('cookieConsent', 'yes');
       $(elem).slideUp('fast', function () {
         elem.parentNode.removeChild(elem);
       });

@@ -2,20 +2,22 @@
 
 Drop-in jQuery plugin for implied to consent to the EU Cookie directive.
 
+Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
+
 ### Usage
 
 ```html
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="jquery.cookieConsent.min.js"></script>
 <script>
-  $.fn.cookieConsent();
+  $.cookieConsent();
 </script>
 ```
 
 ### Configuration
 
 ```javascript
-  $.fn.cookieConsent({
+  $.cookieConsent({
     color: {
       main: '#29f', // Border & icon color
       bg: '#fff', // Background color
