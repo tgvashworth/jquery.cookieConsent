@@ -102,9 +102,3 @@
   };
   
 }(jQuery));
-
-$(function () {
-
-  $.fn.cookieConsent();
-
-});
