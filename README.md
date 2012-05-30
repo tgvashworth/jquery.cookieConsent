@@ -38,7 +38,7 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
     maxWidth: '50%', // Responsiveness
     link: {
       cookies: "http://en.wikipedia.org/wiki/HTTP_cookie", // The cookies link
-      policy: null // The cookie policy link
+      policy: "link/to/your/policy" // The cookie policy link
     }
   });
 ```

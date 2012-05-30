@@ -69,6 +69,9 @@
       return temp;
   
     };
+
+    // Extend our config file using the user's config
+    $.extend(true, config, userConfig);
     
     // The cookieConsent element
     // Sytanx is:
@@ -85,15 +88,14 @@
             ['a', {href: config.link.cookies, content: 'cookies.'}]
           ]
         ],
-        ['p', {content: 'By using this site you agree to our '},
-          ['a', {href: config.link.policy, content: 'cookie policy.'}]
+        // If config.link.policy evaluates to true, include a link.
+        // Ternary operator is somewhat messy here.
+        ['p', {content: 'By using this site you agree to our ' + (!! config.link.policy ? '': 'cookie policy.')},
+          (!! config.link.policy ? ['a', {href: config.link.policy, content: 'cookie policy.'}] : [])
         ],
         ['a', {id: "cookie-close", href: '#', content: 'x'}]
       ]
     ];
-
-    // Extend our config file using the user's config
-    $.extend(true, config, userConfig);
 
     // Build style element
     var style = "";
