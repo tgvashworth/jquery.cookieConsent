@@ -6,6 +6,8 @@ Drop-in jQuery plugin for implied to consent to the EU Cookie directive.
 
 Compliance in one file and `$.cookieConsent()`.
 
+Please fork and contribute!
+
 Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 
 ### Usage
@@ -14,7 +16,9 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="jquery.cookieConsent.min.js"></script>
 <script>
-  $.cookieConsent();
+  $(function () {
+    $.cookieConsent();
+  });
 </script>
 ```
 
@@ -31,7 +35,11 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
     },
     font: '12px Tahoma, sans-serif', // Font size & family
     width: 'auto', // Width of the banner
-    maxWidth: '50%' // Responsiveness
+    maxWidth: '50%', // Responsiveness
+    link: {
+      cookies: "http://en.wikipedia.org/wiki/HTTP_cookie", // The cookies link
+      policy: null // The cookie policy link
+    }
   });
 ```
 

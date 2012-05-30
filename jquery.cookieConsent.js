@@ -26,7 +26,11 @@
       },
       font: '12px Tahoma, sans-serif', // Font size & family
       width: 'auto', // Width of the banner
-      maxWidth: '50%' // Responsiveness
+      maxWidth: '50%', // Responsiveness
+      link: {
+        cookies: "http://en.wikipedia.org/wiki/HTTP_cookie", // The cookies link
+        policy: null // The cookie policy link
+      }
     };
 
     // Build new DOM element from an object
@@ -78,10 +82,12 @@
         ['div', {id: "cookie-info-icon", content: 'i'}],
         ['p', {},
           ['strong', {content: 'This site uses '},
-            ['a', {href: '#', content: 'cookies.'}]
+            ['a', {href: config.link.cookies, content: 'cookies.'}]
           ]
         ],
-        ['p', {content: 'By using this site you agree to our cookie policy.'}],
+        ['p', {content: 'By using this site you agree to our '},
+          ['a', {href: config.link.policy, content: 'cookie policy.'}]
+        ],
         ['a', {id: "cookie-close", href: '#', content: 'x'}]
       ]
     ];
@@ -96,7 +102,7 @@
       style += "#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: " + config.color.popover + "; padding-top: 5em;}";
     }
     if( config.mode === 'tab' ) {
-      style += "#cookie-consent-wrapper {position:absolute;top:0;left:0;right:0;}";
+      style += "#cookie-consent-wrapper {position:absolute;top:0;left:0;right:0;*width:100%;}";
     }
     style += "#cookie-consent {color: " + config.color.text + ";background: " + config.color.bg + ";width: " + config.width + ";max-width: " + config.maxWidth + ";margin:0 auto;font: " + config.font + ";padding: 0.5em;border: 2px solid " + config.color.main + ";position: relative;}";
     if( config.mode === 'tab' ) {
