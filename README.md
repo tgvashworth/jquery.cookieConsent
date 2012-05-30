@@ -24,6 +24,8 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 
 ### Configuration
 
+You can configure the plugin by passing in an object.
+
 ```javascript
   $.cookieConsent({
     mode: 'default', // Default, tab or popover
@@ -39,8 +41,38 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
     link: {
       cookies: "http://en.wikipedia.org/wiki/HTTP_cookie", // The cookies link
       policy: "link/to/your/policy" // The cookie policy link
+    },
+    content: {
+      // Allows you to specify the text content of the plugin, using an aray & object based syntax (explained below)
+      // You can also pass in a string, eg: "<p>Read our <a href='/policy.html'>policy</a></p>"
+      heading:
+        ['strong', {content: 'This site uses '},
+          ['a', {href: config.link.cookies, content: 'cookies.'}]
+        ],
+      text:
+        ['p', {content: "We won't share your data with any third parties."}]
     }
   });
+```
+
+If you'd like to configure the text, you can use the syntax described below:
+
+```javascript
+
+// The cookieConsent element
+// Sytanx is:
+//  [element [string], attributes [object], childElements... [arrays]]
+// Special attributes:
+//  content - inserted as text content of the element
+//  css - object run through jQuery's css method
+
+// For example:
+var myElement =
+['div', {id: "my-element"},
+  ['p', {css: "color: red", content: "I love red paragraphs"}],
+  ['a', {href: "http://google.com/", content: "Click me!"}]
+];
+
 ```
 
 ### License

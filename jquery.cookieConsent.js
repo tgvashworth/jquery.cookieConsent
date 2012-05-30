@@ -33,6 +33,20 @@
       }
     };
 
+    config.content =
+    { // Allows you to specify the text content of the plugin, using an aray & object based syntax (explained below)
+      heading:
+        ['strong', {content: 'This site uses '},
+          ['a', {href: config.link.cookies, content: 'cookies.'}]
+        ],
+      text:
+        // If config.link.policy evaluates to true, include a link.
+        // Ternary operator is somewhat messy here.
+        ['p', {content: 'By using this site you agree to our ' + (!! config.link.policy ? '': 'cookie policy.')},
+          (!! config.link.policy ? ['a', {href: config.link.policy, content: 'cookie policy.'}] : [])
+        ]
+    };
+
     // Build new DOM element from an object
     var buildElement = function buildElement(elemConfig) {
 
@@ -62,7 +76,12 @@
       if( elemConfig.length > 2 ) {
           i = 2, l = elemConfig.length;
           for( ; i < l; i++ ) {
-              temp.appendChild(buildElement(elemConfig[i]));
+              // Allow a string to be passed in
+              if( typeof elemConfig[i] === "string" ) {
+                $(temp).html($(temp).html() + elemConfig[i]);
+              } else {
+                temp.appendChild(buildElement(elemConfig[i]));
+              }
           }
       }
       
@@ -84,15 +103,9 @@
       ['div', {id: "cookie-consent"},
         ['div', {id: "cookie-info-icon", content: 'i'}],
         ['p', {},
-          ['strong', {content: 'This site uses '},
-            ['a', {href: config.link.cookies, content: 'cookies.'}]
-          ]
+          config.content.heading
         ],
-        // If config.link.policy evaluates to true, include a link.
-        // Ternary operator is somewhat messy here.
-        ['p', {content: 'By using this site you agree to our ' + (!! config.link.policy ? '': 'cookie policy.')},
-          (!! config.link.policy ? ['a', {href: config.link.policy, content: 'cookie policy.'}] : [])
-        ],
+        config.content.text,
         ['a', {id: "cookie-close", href: '#', content: 'x'}]
       ]
     ];
