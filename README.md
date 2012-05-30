@@ -69,7 +69,7 @@ If you'd like to configure the text, you can use the syntax described below:
 // For example:
 var myElement =
 ['div', {id: "my-element"},
-  ['p', {css: "color: red", content: "I love red paragraphs"}],
+  ['p', {css: {color: "red"}, content: "I love red paragraphs"}],
   ['a', {href: "http://google.com/", content: "Click me!"}]
 ];
 
