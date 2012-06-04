@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>jQuery.cookieConsent by phuu</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>jQuery.cookieConsent</h1>
+        <p>Drop-in jQuery plugin for implied to consent to the EU Cookie directive</p>
+        <p class="view"><a href="https://github.com/phuu/jquery.cookieConsent">View the Project on GitHub <small>phuu/jquery.cookieConsent</small></a></p>
+        <ul>
+          <li><a href="https://github.com/phuu/jquery.cookieConsent/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/phuu/jquery.cookieConsent/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/phuu/jquery.cookieConsent">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><img src="http://i.phuu.net/2h0g1E3z3P252L2l312I/Screen%20Shot%202012-05-28%20at%2012.06.13.png" alt="jquery.cookieConsent"></p>
+
+<h1>jquery.cookieConsent</h1>
+
+<p>Drop-in jQuery plugin for implied to consent to the EU Cookie directive.</p>
+
+<p>Compliance in one file and <code>$.cookieConsent()</code>.</p>
+
+<p>Please fork and contribute!</p>
+
+<p>Contains <a href="https://github.com/carhartl/jquery-cookie">jquery.cookie</a>.</p>
+
+<h3>Usage</h3>
+
+<div class="highlight">
+<pre><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jquery.cookieConsent.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">cookieConsent</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</pre>
+</div>
+
+
+<h3>Configuration</h3>
+
+<p>You can configure the plugin by passing in an object.</p>
+
+<div class="highlight">
+<pre>  <span class="nx">$</span><span class="p">.</span><span class="nx">cookieConsent</span><span class="p">({</span>
+    <span class="nx">mode</span><span class="o">:</span> <span class="s1">'default'</span><span class="p">,</span> <span class="c1">// Default, tab or popover</span>
+    <span class="nx">color</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">main</span><span class="o">:</span> <span class="s1">'#29f'</span><span class="p">,</span> <span class="c1">// Border &amp; icon color</span>
+      <span class="nx">bg</span><span class="o">:</span> <span class="s1">'#fff'</span><span class="p">,</span> <span class="c1">// Background color</span>
+      <span class="nx">popover</span><span class="o">:</span> <span class="s1">'rgba(0,0,0,.3)'</span><span class="p">,</span> <span class="c1">// Popover background color</span>
+      <span class="nx">text</span><span class="o">:</span> <span class="s1">'#444'</span> <span class="c1">// Text color</span>
+    <span class="p">},</span>
+    <span class="nx">font</span><span class="o">:</span> <span class="s1">'12px Tahoma, sans-serif'</span><span class="p">,</span> <span class="c1">// Font size &amp; family</span>
+    <span class="nx">width</span><span class="o">:</span> <span class="s1">'auto'</span><span class="p">,</span> <span class="c1">// Width of the banner</span>
+    <span class="nx">maxWidth</span><span class="o">:</span> <span class="s1">'50%'</span><span class="p">,</span> <span class="c1">// Responsiveness</span>
+    <span class="nx">link</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">cookies</span><span class="o">:</span> <span class="s2">"http://en.wikipedia.org/wiki/HTTP_cookie"</span><span class="p">,</span> <span class="c1">// The cookies link</span>
+      <span class="nx">policy</span><span class="o">:</span> <span class="s2">"link/to/your/policy"</span> <span class="c1">// The cookie policy link</span>
+    <span class="p">},</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="p">{</span>
+      <span class="c1">// Allows you to specify the text content of the plugin, using an aray &amp; object based syntax (explained below)</span>
+      <span class="c1">// You can also pass in a string, eg: "&lt;p&gt;Read our &lt;a href='/policy.html'&gt;policy&lt;/a&gt;&lt;/p&gt;"</span>
+      <span class="nx">heading</span><span class="o">:</span>
+        <span class="p">[</span><span class="s1">'strong'</span><span class="p">,</span> <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s1">'This site uses '</span><span class="p">},</span>
+          <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span><span class="nx">href</span><span class="o">:</span> <span class="s1">'http://en.wikipedia.org/wiki/HTTP_cookie'</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s1">'cookies.'</span><span class="p">}]</span>
+        <span class="p">],</span>
+      <span class="nx">text</span><span class="o">:</span>
+        <span class="p">[</span><span class="s1">'p'</span><span class="p">,</span> <span class="p">{</span><span class="nx">content</span><span class="o">:</span> <span class="s2">"We won't share your data with any third parties."</span><span class="p">}]</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</pre>
+</div>
+
+
+<p>If you'd like to configure the text, you can use the syntax described below:</p>
+
+<div class="highlight">
+<pre>
+<span class="c1">// The cookieConsent element</span>
+<span class="c1">// Sytanx is:</span>
+<span class="c1">//  [element [string], attributes [object], childElements... [arrays]]</span>
+<span class="c1">// Special attributes:</span>
+<span class="c1">//  content - inserted as text content of the element</span>
+<span class="c1">//  css - object run through jQuery's css method</span>
+
+<span class="c1">// For example:</span>
+<span class="kd">var</span> <span class="nx">myElement</span> <span class="o">=</span>
+<span class="p">[</span><span class="s1">'div'</span><span class="p">,</span> <span class="p">{</span><span class="nx">id</span><span class="o">:</span> <span class="s2">"my-element"</span><span class="p">},</span>
+  <span class="p">[</span><span class="s1">'p'</span><span class="p">,</span> <span class="p">{</span><span class="nx">css</span><span class="o">:</span> <span class="p">{</span><span class="nx">color</span><span class="o">:</span> <span class="s2">"red"</span><span class="p">},</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">"I love red paragraphs"</span><span class="p">}],</span>
+  <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span><span class="nx">href</span><span class="o">:</span> <span class="s2">"http://google.com/"</span><span class="p">,</span> <span class="nx">content</span><span class="o">:</span> <span class="s2">"Click me!"</span><span class="p">}]</span>
+<span class="p">];</span>
+
+</pre>
+</div>
+
+
+<h3>License</h3>
+
+<p>MIT License</p>
+
+<p>Copyright (C) Tom Ashworth 2012</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/phuu">phuu</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
