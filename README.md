@@ -47,7 +47,7 @@ You can configure the plugin by passing in an object.
       // You can also pass in a string, eg: "<p>Read our <a href='/policy.html'>policy</a></p>"
       heading:
         ['strong', {content: 'This site uses '},
-          ['a', {href: config.link.cookies, content: 'cookies.'}]
+          ['a', {href: 'http://en.wikipedia.org/wiki/HTTP_cookie', content: 'cookies.'}]
         ],
       text:
         ['p', {content: "We won't share your data with any third parties."}]
