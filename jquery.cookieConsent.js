@@ -3,6 +3,7 @@
  * https://github.com/phuu/cookieConsent
  *
  * Copyright 2012, Tom Ashworth
+ * Originally created for The Higgs Design Co - http://higgsdesign.com
  */
 (function ($) {
   
