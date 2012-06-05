@@ -2,7 +2,7 @@
 
 # jquery.cookieConsent
 
-Drop-in jQuery plugin for implied to consent to the EU Cookie directive.
+Drop-in jQuery plugin for implied consent to the EU Cookie directive (UK implementation).
 
 Compliance in one file and `$.cookieConsent()`.
 
@@ -13,7 +13,7 @@ Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
 ### Usage
 
 ```html
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="jquery.cookieConsent.min.js"></script>
 <script>
   $(function () {
