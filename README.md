@@ -4,11 +4,11 @@
 
 Drop-in jQuery plugin for implied consent to the EU Cookie directive (UK implementation).
 
-Compliance in one file and `$.cookieConsent()`.
-
-Please fork and contribute!
+Compliance in one file and `$.cookieConsent()`. Please fork and contribute!
 
 Contains [jquery.cookie](https://github.com/carhartl/jquery-cookie).
+
+This plugin was originally created for [The Higgs Design Co](//higgsdesign.com).
 
 ### Usage
 
