@@ -7,10 +7,7 @@
  */
 (function ($) {
   
-  $.cookieConsent = function (
-    userConfig) {
-
-    if( $.cookie('cookieConsent') === 'yes' ) { return; }
+  $.cookieConsent = function (userConfig) {
 
     if( ! userConfig ) {
       userConfig = {};
@@ -19,6 +16,7 @@
     // Default configuration
     var config = {
       mode: 'default', // Default, tab or popover
+      persistence: 'heavy', // Light (hides after viewed once) or Heavy (requires user to interact/close)
       color: {
         main: '#29f', // Border & icon color
         bg: '#fff', // Background color
@@ -26,6 +24,7 @@
         text: '#444' // Text color
       },
       font: '12px Tahoma, sans-serif', // Font size & family
+      slideSpeed: 'fast', // Fast, Slow, or number e.g. 300 or 0 (no animation)
       width: 'auto', // Width of the banner
       maxWidth: '50%', // Responsiveness
       link: {
@@ -33,6 +32,8 @@
         policy: null // The cookie policy link
       }
     };
+
+    if( $.cookie('cookieConsent') === 'yes' ) { html_elem.addClass('cookie-consent-given'); $('#cookie-consent-wrapper').slideDown(config.slideSpeed); return; }
 
     config.content =
     { // Allows you to specify the text content of the plugin, using an aray & object based syntax (explained below)
@@ -113,7 +114,7 @@
 
     // Build style element
     var style = "";
-    style += "#cookie-consent-wrapper {z-index:9999;clear:both;overflow:hidden;position:relative;}";
+    style += "#cookie-consent-wrapper {display:none;z-index:9999;clear:both;overflow:hidden;position:relative;}";
     if( config.mode === 'popover' ) {
       style += "#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: " + config.color.popover + "; padding-top: 5em;}";
     }
@@ -132,16 +133,25 @@
     style += "#cookie-close:hover {background: #efefef}";
     style = "<style>" + style + "</style>";
 
+	// Get HTML Element
+	var html_elem = $('html');
+
     // Build the element
     var elem = buildElement(cookieElement);
+
+	if(config.persistence=="light") { // Light, hide after first view
+		$.cookie('cookieConsent', 'yes');
+	}
 
     // Set up quit behaviour
     $(elem).on('click', '#cookie-close', function () {
       $.cookie('cookieConsent', 'yes');
-      $(elem).slideUp('fast', function () {
+      $(elem).slideUp(config.slideSpeed, function () {
         elem.parentNode.removeChild(elem);
+		html_elem.addClass('cookie-consent-given');
       });
     });
+
 
     // Add the elements
     $(style).appendTo('head');
