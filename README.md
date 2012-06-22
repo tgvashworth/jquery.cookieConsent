@@ -29,6 +29,7 @@ You can configure the plugin by passing in an object.
 ```javascript
   $.cookieConsent({
     mode: 'default', // Default, tab or popover
+    persistence: 'heavy', // Light (hides after viewed once) or Heavy (requires user to interact/close)
     color: {
       main: '#29f', // Border & icon color
       bg: '#fff', // Background color

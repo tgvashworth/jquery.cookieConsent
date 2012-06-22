@@ -33,7 +33,11 @@
       }
     };
 
-    if( $.cookie('cookieConsent') === 'yes' ) { html_elem.addClass('cookie-consent-given'); $('#cookie-consent-wrapper').slideDown(config.slideSpeed); return; }
+    if( $.cookie('cookieConsent') === 'yes' ) {
+      $('html').addClass('cookie-consent-given');
+      $('#cookie-consent-wrapper').slideDown(config.slideSpeed);
+      return;
+    }
 
     config.content =
     { // Allows you to specify the text content of the plugin, using an aray & object based syntax (explained below)
@@ -133,25 +137,24 @@
     style += "#cookie-close:hover {background: #efefef}";
     style = "<style>" + style + "</style>";
 
-	// Get HTML Element
-	var html_elem = $('html');
+    // Get HTML Element
+    var html_elem = $('html');
 
     // Build the element
     var elem = buildElement(cookieElement);
 
-	if(config.persistence=="light") { // Light, hide after first view
-		$.cookie('cookieConsent', 'yes');
-	}
+    if(config.persistence === "light") { // Light, hide after first view
+      $.cookie('cookieConsent', 'yes');
+    }
 
     // Set up quit behaviour
     $(elem).on('click', '#cookie-close', function () {
       $.cookie('cookieConsent', 'yes');
       $(elem).slideUp(config.slideSpeed, function () {
         elem.parentNode.removeChild(elem);
-		html_elem.addClass('cookie-consent-given');
+        $('html').addClass('cookie-consent-given');
       });
     });
-
 
     // Add the elements
     $(style).appendTo('head');
