@@ -13,7 +13,8 @@ This plugin was originally created for [The Higgs Design Co](//higgsdesign.com).
 ### Usage
 
 ```html
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="jquery.cookie.js"></script>
 <script src="jquery.cookieConsent.min.js"></script>
 <script>
   $(function () {
