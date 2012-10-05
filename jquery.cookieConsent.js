@@ -6,13 +6,13 @@
  * Originally created for The Higgs Design Co - http://higgsdesign.com
  */
 (function ($) {
-  
+
   $.cookieConsent = function (userConfig) {
 
     if( ! userConfig ) {
       userConfig = {};
     }
-    
+
     // Default configuration
     var config = {
       mode: 'default', // Default, tab or popover
@@ -28,10 +28,13 @@
       width: 'auto', // Width of the banner
       maxWidth: '50%', // Responsiveness
       link: {
-        cookies: "http://en.wikipedia.org/wiki/HTTP_cookie", // The cookies link
+        cookies: 'http://en.wikipedia.org/wiki/HTTP_cookie', // The cookies link
         policy: null // The cookie policy link
       }
     };
+
+    // Extend our config file using the user's config
+    $.extend(true, config, userConfig);
 
     if( $.cookie('cookieConsent') === 'yes' ) {
       $('html').addClass('cookie-consent-given');
@@ -57,10 +60,10 @@
     var buildElement = function buildElement(elemConfig) {
 
       var i, l;
-  
+
       // First array element is the new DOM element tag
       var temp = document.createElement(elemConfig[0]);
-  
+
       // Second is an object of attributes
       // 'content' attribute is inserted as element content
       if( elemConfig[1] ) {
@@ -77,27 +80,24 @@
           }
         }
       }
-  
+
       // Third or greater are child elements
       if( elemConfig.length > 2 ) {
           i = 2, l = elemConfig.length;
           for( ; i < l; i++ ) {
               // Allow a string to be passed in
-              if( typeof elemConfig[i] === "string" ) {
+              if( typeof elemConfig[i] === 'string' ) {
                 $(temp).html($(temp).html() + elemConfig[i]);
               } else {
                 temp.appendChild(buildElement(elemConfig[i]));
               }
           }
       }
-      
+
       return temp;
-  
+
     };
 
-    // Extend our config file using the user's config
-    $.extend(true, config, userConfig);
-    
     // The cookieConsent element
     // Sytanx is:
     //  [element [string], attributes [object], childElements... [arrays]]
@@ -105,37 +105,37 @@
     //  content - inserted as text content of the element
     //  css - object run through jQuery's css method
     var cookieElement =
-    ['div', {id: "cookie-consent-wrapper"},
-      ['div', {id: "cookie-consent"},
-        ['div', {id: "cookie-info-icon", content: 'i'}],
+    ['div', {id: 'cookie-consent-wrapper'},
+      ['div', {id: 'cookie-consent'},
+        ['div', {id: 'cookie-info-icon', content: 'i'}],
         ['p', {},
           config.content.heading
         ],
         config.content.text,
-        ['a', {id: "cookie-close", href: '#', content: 'x'}]
+        ['a', {id: 'cookie-close', href: '#', content: 'x'}]
       ]
     ];
 
     // Build style element
-    var style = "";
-    style += "#cookie-consent-wrapper {display:none;z-index:9999;clear:both;overflow:hidden;position:relative;}";
+    var style = '';
+    style += '#cookie-consent-wrapper {z-index:9999;clear:both;overflow:hidden;position:relative;}';
     if( config.mode === 'popover' ) {
-      style += "#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: " + config.color.popover + "; padding-top: 5em;}";
+      style += '#cookie-consent-wrapper {position:fixed;top:0;left:0;right:0;bottom:0;background: ' + config.color.popover + '; padding-top: 5em;}';
     }
     if( config.mode === 'tab' ) {
-      style += "#cookie-consent-wrapper {position:absolute;top:0;left:0;right:0;*width:100%;}";
+      style += '#cookie-consent-wrapper {position:absolute;top:0;left:0;right:0;*width:100%;}';
     }
-    style += "#cookie-consent {color: " + config.color.text + ";background: " + config.color.bg + ";width: " + config.width + ";max-width: " + config.maxWidth + ";margin:0 auto;font: " + config.font + ";padding: 0.5em;border: 2px solid " + config.color.main + ";position: relative;}";
+    style += '#cookie-consent {color: ' + config.color.text + ';background: ' + config.color.bg + ';width: ' + config.width + ';max-width: ' + config.maxWidth + ';margin:0 auto;font: ' + config.font + ';padding: 0.5em;border: 2px solid ' + config.color.main + ';position: relative;}';
     if( config.mode === 'tab' ) {
-      style += "#cookie-consent {border-top: none;}";
+      style += '#cookie-consent {border-top: none;}';
     }
-    style += "#cookie-info-icon {font-family: serif; font-size: 1.4em;background: " + config.color.main + ";float: left;padding: .25em .75em;border-radius: 50%;color: white;margin-right: .5em;}";
-    style += "#cookie-consent p {margin: 0;overflow: hidden;}";
-    style += "#cookie-consent a, #cookie-consent a:visited {color:" + config.color.main + "}";
-    style += "#cookie-consent a:hover {color:" + config.color.text + "}";
-    style += "#cookie-close {position: absolute;top: 0;right: 0;padding: 0em .5em .25em;text-decoration: none;}";
-    style += "#cookie-close:hover {background: #efefef}";
-    style = "<style>" + style + "</style>";
+    style += '#cookie-info-icon {font-family: serif; font-size: 1.4em;background: ' + config.color.main + ';float: left;padding: .25em .75em;border-radius: 50%;color: white;margin-right: .5em;}';
+    style += '#cookie-consent p {margin: 0;overflow: hidden;}';
+    style += '#cookie-consent a, #cookie-consent a:visited {color:' + config.color.main + '}';
+    style += '#cookie-consent a:hover {color:' + config.color.text + '}';
+    style += '#cookie-close {position: absolute;top: 0;right: 0;padding: 0em .5em .25em;text-decoration: none;}';
+    style += '#cookie-close:hover {background: #efefef}';
+    style = '<style>' + style + '</style>';
 
     // Get HTML Element
     var html_elem = $('html');
@@ -143,7 +143,7 @@
     // Build the element
     var elem = buildElement(cookieElement);
 
-    if(config.persistence === "light") { // Light, hide after first view
+    if(config.persistence === 'light') { // Light, hide after first view
       $.cookie('cookieConsent', 'yes');
     }
 
@@ -161,5 +161,5 @@
     $(elem).prependTo('body');
 
   };
-  
+
 }(jQuery));

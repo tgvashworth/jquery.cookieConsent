@@ -1,11 +1,21 @@
 <!doctype html>
+<html>
 <meta charset="utf-8">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script src="jquery.cookieConsent.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="/jquery.cookie.js"></script>
+<script src="/jquery.cookieConsent.js"></script>
 <script>
   $(function () {
     $.cookieConsent({
-      // Your configuration
+      mode: 'tab',
+      link: {
+        policy: '/policy'
+      }
     });
   });
 </script>
+<body>
+  <h1>Example</h1>
+  <p>This is an example</p>
+</body>
+</html>
